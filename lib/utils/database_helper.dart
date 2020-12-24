@@ -42,6 +42,7 @@ class DatabaseHelper {
       ${Item.colId} INTEGER PRIMARY KEY AUTOINCREMENT,
       ${Item.colTypeId} INTEGER NOT NULL,
       ${Item.colPathImage} TEXT NOT NULL,
+      ${Item.colNameItem} TEXT NOT NULL,
       ${Item.colCreateDate} datetime default current_timestamp
     )
     ''');
