@@ -21,7 +21,7 @@ class _ItemsPageState extends State<ItemsPage> {
           title: Text('${arguments['type'].name}'),
         ),
         body: ListView.builder(
-          itemCount: 2,
+          itemCount: 5,
           shrinkWrap: true,
           physics: ClampingScrollPhysics(),
           scrollDirection: Axis.vertical,
