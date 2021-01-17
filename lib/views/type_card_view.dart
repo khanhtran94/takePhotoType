@@ -12,7 +12,6 @@ class TypeCardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var nextInt = random.nextInt(3);
     return InkWell(
       child: Container(
         child: Column(

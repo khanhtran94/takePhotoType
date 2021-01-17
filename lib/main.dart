@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:take_photo_type/views/item_view.dart';
 import 'package:take_photo_type/views/items_page.dart';
 import 'package:take_photo_type/views/type_page.dart';
 
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/TypePage': (context) => TypePage(),
         '/ItemsPage': (context) => ItemsPage(),
+        '/ItemView': (context) => ItemView(),
       },
     );
   }
