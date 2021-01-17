@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:take_photo_type/views/items_page.dart';
 import 'package:take_photo_type/views/type_page.dart';
 
 void main() => runApp(MyApp());
@@ -12,6 +13,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(),
+      initialRoute: '/',
+      routes: {
+        '/TypePage': (context) => TypePage(),
+        '/ItemsPage': (context) => ItemsPage(),
+      },
     );
   }
 }

@@ -39,10 +39,12 @@ class TypeCardView extends StatelessWidget {
       ),
       onTap: () {
         print('tap to type ${this.type.name}');
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => ItemsPage(
-                  type: this.type,
-                )));
+        Navigator.pushNamed(context, ItemsPage.routeName,
+            arguments: {'type': this.type});
+        // Navigator.of(context).push(MaterialPageRoute(
+        //     builder: (context) => ItemsPage(
+        //           type: this.type,
+        //         )));
       },
       splashColor: Colors.deepOrangeAccent,
     );
