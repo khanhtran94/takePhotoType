@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:take_photo_type/models/type.dart';
+import 'package:take_photo_type/views/items_page.dart';
 
 class TypeCardView extends StatelessWidget {
   Type type;
@@ -12,7 +13,7 @@ class TypeCardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var nextInt = random.nextInt(3);
-    return Container(
+    return InkWell(
       child: Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -36,6 +37,14 @@ class TypeCardView extends StatelessWidget {
             ),
             borderRadius: BorderRadius.circular(20)),
       ),
+      onTap: () {
+        print('tap to type ${this.type.name}');
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => ItemsPage(
+                  type: this.type,
+                )));
+      },
+      splashColor: Colors.deepOrangeAccent,
     );
   }
 }
