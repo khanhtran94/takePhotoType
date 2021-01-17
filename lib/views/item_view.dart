@@ -15,10 +15,15 @@ class ItemView extends StatelessWidget {
     }
 
     return SingleChildScrollView(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: listPhoto.toList(),
-      ),
-    );
+        child: Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: listPhoto.toList(),
+        ),
+        Text('${DateTime.now()}')
+      ],
+    ));
   }
 }
