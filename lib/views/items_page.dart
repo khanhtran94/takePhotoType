@@ -26,6 +26,7 @@ class _ItemsPageState extends State<ItemsPage> {
           itemCount: 20,
           shrinkWrap: true,
           physics: ClampingScrollPhysics(),
+          scrollDirection: Axis.vertical,
           itemBuilder: (context, index) {
             return ItemView();
           },
