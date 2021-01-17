@@ -17,21 +17,20 @@ class _ItemsPageState extends State<ItemsPage> {
   Widget build(BuildContext context) {
     Map<String, Type> arguments = ModalRoute.of(context).settings.arguments;
     return Scaffold(
-      appBar: AppBar(
-        title: Text('${arguments['type'].name}'),
-      ),
-      body: Container(
-        margin: EdgeInsets.symmetric(vertical: 20),
-        child: ListView.builder(
-          itemCount: 20,
+        appBar: AppBar(
+          title: Text('${arguments['type'].name}'),
+        ),
+        body: ListView.builder(
+          itemCount: 2,
           shrinkWrap: true,
           physics: ClampingScrollPhysics(),
           scrollDirection: Axis.vertical,
           itemBuilder: (context, index) {
-            return ItemView();
+            return Container(
+              height: 200,
+              child: ItemView(),
+            );
           },
-        ),
-      ),
-    );
+        ));
   }
 }

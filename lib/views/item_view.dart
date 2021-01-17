@@ -14,16 +14,21 @@ class ItemView extends StatelessWidget {
       ));
     }
 
-    return SingleChildScrollView(
-        child: Column(
+    return Row(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: listPhoto.toList(),
+        ListView.builder(
+          itemCount: 1,
+          shrinkWrap: true,
+          physics: ClampingScrollPhysics(),
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (contex, index) {
+            return Photo(
+              path: 'http://via.placeholder.com/350x350',
+            );
+          },
         ),
         Text('${DateTime.now()}')
       ],
-    ));
+    );
   }
 }
