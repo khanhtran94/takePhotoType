@@ -22,26 +22,13 @@ class _ItemsPageState extends State<ItemsPage> {
       ),
       body: Container(
         margin: EdgeInsets.symmetric(vertical: 20),
-        child: ListView(
-          scrollDirection: Axis.vertical,
-          children: [
-            Container(
-              height: 20,
-              color: Colors.amber,
-            ),
-            Padding(padding: EdgeInsets.all(10)),
-            Container(
-              height: 20,
-              color: Colors.amber,
-            ),
-            Padding(padding: EdgeInsets.all(10)),
-            Container(
-              height: 20,
-              color: Colors.amber,
-            ),
-            Padding(padding: EdgeInsets.all(10)),
-            ItemView()
-          ],
+        child: ListView.builder(
+          itemCount: 20,
+          shrinkWrap: true,
+          physics: ClampingScrollPhysics(),
+          itemBuilder: (context, index) {
+            return ItemView();
+          },
         ),
       ),
     );

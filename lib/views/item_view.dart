@@ -7,27 +7,36 @@ class ItemView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Todo: thay bang anh load tu local
-    return Row(
+    return ListView(
+      physics: ClampingScrollPhysics(),
+      shrinkWrap: true,
+      scrollDirection: Axis.vertical,
       children: [
-        ClipRRect(
-            clipBehavior: Clip.hardEdge,
+        Container(
+            width: MediaQuery.of(context).size.width * 0.5,
+            height: MediaQuery.of(context).size.height * 0.5,
+            child: Center(
+              child: FittedBox(
+                child: CachedNetworkImage(
+                  imageUrl: "http://via.placeholder.com/350x350",
+                  placeholder: (context, url) => CircularProgressIndicator(),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                  fit: BoxFit.contain,
+                ),
+              ),
+            )),
+        Container(
+            width: MediaQuery.of(context).size.width * 0.5,
+            height: MediaQuery.of(context).size.height * 0.5,
             child: Center(
               child: CachedNetworkImage(
                 imageUrl: "http://via.placeholder.com/350x350",
                 placeholder: (context, url) => CircularProgressIndicator(),
                 errorWidget: (context, url, error) => Icon(Icons.error),
+                fit: BoxFit.contain,
               ),
             )),
-        ClipRRect(
-          clipBehavior: Clip.hardEdge,
-          child: Center(
-            child: CachedNetworkImage(
-              imageUrl: "http://via.placeholder.com/350x350",
-              placeholder: (context, url) => CircularProgressIndicator(),
-              errorWidget: (context, url, error) => Icon(Icons.error),
-            ),
-          ),
-        )
+        Text('item ${DateTime.now()}')
       ],
     );
   }
