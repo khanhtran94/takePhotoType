@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:take_photo_type/models/type.dart';
 import 'package:take_photo_type/views/item_view.dart';
+import 'package:take_photo_type/views/take_picture_screen.dart';
 
 class ItemsPage extends StatefulWidget {
   static final String routeName = '/ItemsPage';
@@ -17,20 +18,25 @@ class _ItemsPageState extends State<ItemsPage> {
   Widget build(BuildContext context) {
     Map<String, Type> arguments = ModalRoute.of(context).settings.arguments;
     return Scaffold(
-        appBar: AppBar(
-          title: Text('${arguments['type'].name}'),
-        ),
-        body: ListView.builder(
-          itemCount: 5,
-          shrinkWrap: true,
-          physics: ClampingScrollPhysics(),
-          scrollDirection: Axis.vertical,
-          itemBuilder: (context, index) {
-            return Container(
-              height: 200,
-              child: ItemView(),
-            );
-          },
-        ));
+      appBar: AppBar(
+        title: Text('${arguments['type'].name}'),
+      ),
+      body: ListView.builder(
+        itemCount: 5,
+        shrinkWrap: true,
+        physics: ClampingScrollPhysics(),
+        scrollDirection: Axis.vertical,
+        itemBuilder: (context, index) {
+          return Container(
+            height: 200,
+            child: ItemView(),
+          );
+        },
+      ),
+      floatingActionButton: Container(
+        child: TakePictureScreen(),
+        alignment: Alignment.bottomCenter,
+      ),
+    );
   }
 }
