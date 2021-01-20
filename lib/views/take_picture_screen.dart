@@ -3,9 +3,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:path/path.dart' show join;
-import 'package:path_provider/path_provider.dart';
-import 'package:camera/camera.dart';
 
 class TakePictureScreen extends StatefulWidget {
   @override
@@ -16,9 +13,9 @@ class _TakePictureScreenState extends State<TakePictureScreen> {
   File fileImage;
 
   _openCamera(BuildContext context) async {
-    var picture = await ImagePicker.pickImage(source: ImageSource.camera);
+    var picture = await ImagePicker().getImage(source: ImageSource.camera);
     this.setState(() {
-      fileImage = picture;
+      fileImage = File(picture.path);
     });
     Navigator.of(context).pop();
   }
@@ -45,30 +42,35 @@ class _TakePictureScreenState extends State<TakePictureScreen> {
         });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return RaisedButton(
-      child: Icon(Icons.camera),
-      onPressed: () {
-        _showChoiceDiaglog(context);
-      },
-    );
+  Widget _decideImageView() {
+    if (fileImage == null) {
+      return Text('No image');
+    } else {
+      return Image.file(
+        fileImage,
+        width: 400,
+        height: 400,
+      );
+    }
   }
-}
-
-// A widget that displays the picture taken by the user.
-class DisplayPictureScreen extends StatelessWidget {
-  final String imagePath;
-
-  const DisplayPictureScreen({Key key, this.imagePath}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Display the Picture')),
-      // The image is stored as a file on the device. Use the `Image.file`
-      // constructor with the given path to display the image.
-      body: Image.file(File(imagePath)),
+    return Container(
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            _decideImageView(),
+            RaisedButton(
+              child: Icon(Icons.add_circle),
+              onPressed: () {
+                _showChoiceDiaglog(context);
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
