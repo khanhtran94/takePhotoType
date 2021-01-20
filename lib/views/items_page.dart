@@ -33,9 +33,14 @@ class _ItemsPageState extends State<ItemsPage> {
           );
         },
       ),
-      floatingActionButton: Container(
-        child: TakePictureScreen(),
-        alignment: Alignment.bottomCenter,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add_a_photo_rounded),
+        onPressed: () {
+          Navigator.pushNamed(
+            context,
+            TakePictureScreen.routeName,
+          );
+        },
       ),
     );
   }
